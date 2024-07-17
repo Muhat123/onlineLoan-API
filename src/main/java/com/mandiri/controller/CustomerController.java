@@ -10,6 +10,7 @@ import com.mandiri.repository.CustomerRepository;
 import com.mandiri.service.service.CustomerService;
 import com.mandiri.service.service.LoanService;
 import com.mandiri.service.service.LoanTransactionService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ import java.util.List;
 @RequestMapping("/api/v1/customer")
 @RequiredArgsConstructor
 @Slf4j
+@SecurityRequirement(name = "Authorization")
 public class CustomerController {
     private final CustomerService customerService;
     private final LoanService loanService;
