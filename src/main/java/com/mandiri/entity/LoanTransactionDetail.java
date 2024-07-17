@@ -22,7 +22,6 @@ public class LoanTransactionDetail {
     @JoinColumn(name = "loan_transaction_id", nullable = false)
     private LoanTransaction loanTransaction;
     private LoanStatus loanStatus;
-    @Temporal(TemporalType.TIMESTAMP)
     private Long createdAt;
     private Long updatedAt;
     public enum LoanStatus {

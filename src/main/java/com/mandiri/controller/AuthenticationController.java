@@ -23,7 +23,7 @@ public class AuthenticationController {
 
     private final AuthenticationService auth;
 
-    @PostMapping("/register/customer")
+    @PostMapping("/signup/customer")
     public ResponseEntity<CommonResponse<RegisterResponse>> registerCustomer(@RequestBody AuthRequest<CustomerRequest> request){
         RegisterResponse response = auth.registerCustomer(request);
         CommonResponse<RegisterResponse> commonResponse = CommonResponse.<RegisterResponse>builder()
@@ -38,7 +38,7 @@ public class AuthenticationController {
 
     }
 
-    @PostMapping("/register/admin")
+    @PostMapping("/signup/admin")
     public ResponseEntity<CommonResponse<RegisterResponse>> registerAdmin(@RequestBody AuthRequest<CustomerRequest> request){
         RegisterResponse response = auth.registerAdmin(request);
         CommonResponse<RegisterResponse> commonResponse = CommonResponse.<RegisterResponse>builder()
@@ -53,7 +53,7 @@ public class AuthenticationController {
 
     }
 
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ResponseEntity<CommonResponse<LoginResponse>> login(@RequestBody AuthRequest<String> request){
         LoginResponse response = auth.login(request);
         CommonResponse<LoginResponse> commonResponse = CommonResponse.<LoginResponse>builder()

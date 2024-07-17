@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LoanTransactionService {
-    LoanTransaction addLoanTransaction(LoanTransactionRequest request);
+    LoanTransaction addLoanTransaction_oneMonth(LoanTransactionRequest request);
 }

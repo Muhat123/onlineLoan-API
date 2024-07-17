@@ -1,13 +1,18 @@
 package com.mandiri.controller;
 
 import com.mandiri.dto.reponse.CustomerResponse;
+import com.mandiri.dto.reponse.LoanTransactionResponse;
 import com.mandiri.dto.request.CustomerRequest;
+import com.mandiri.dto.request.LoanTransactionRequest;
+import com.mandiri.entity.LoanTransaction;
 import com.mandiri.entity.LoanType;
 import com.mandiri.repository.CustomerRepository;
 import com.mandiri.service.service.CustomerService;
 import com.mandiri.service.service.LoanService;
+import com.mandiri.service.service.LoanTransactionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +26,7 @@ public class CustomerController {
     private final CustomerService customerService;
     private final LoanService loanService;
     private final CustomerRepository customerRepository;
+    private final LoanTransactionService loanTransactionService;
 
 
     @PostMapping
@@ -75,5 +81,29 @@ public class CustomerController {
         return ResponseEntity.ok("Successfully delete loan by id");
     }
 
+    @PostMapping("/one-month")
+    public ResponseEntity<LoanTransactionResponse> addOneMonthLoanTransaction(@RequestBody LoanTransactionRequest request) {
+        try {
+            LoanTransaction transaction = loanTransactionService.addLoanTransaction_oneMonth(request);
+            LoanTransactionResponse response = convertToResponse(transaction);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    private LoanTransactionResponse convertToResponse(LoanTransaction transaction) {
+        return LoanTransactionResponse.builder()
+                .id(transaction.getId())
+                .customerId(transaction.getCustomer().getId())
+                .loanTypeId(transaction.getLoanType().getId())
+                .nominal(transaction.getNominal())
+                .approvedAt(transaction.getApprovedAt())
+                .approvedBy(transaction.getApprovedBy())
+                .approvalStatus(transaction.getApprovalStatus().toString())
+                .createdAt(transaction.getCreatedAt())
+                .updatedAt(transaction.getUpdatedAt())
+                .build();
+    }
 
 }
