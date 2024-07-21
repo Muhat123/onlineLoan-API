@@ -18,6 +18,7 @@ public class Role {
     private String id;
     private ERole name;
 
+
     public enum ERole {
         ROLE_CUSTOMER,
         ROLE_STAFF,

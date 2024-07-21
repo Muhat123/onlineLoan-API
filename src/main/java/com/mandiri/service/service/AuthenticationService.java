@@ -9,4 +9,5 @@ public interface AuthenticationService {
     RegisterResponse registerCustomer(AuthRequest<CustomerRequest> authRequest);
     LoginResponse login(AuthRequest<String> request);
     RegisterResponse registerAdmin(AuthRequest<CustomerRequest> request);
+    RegisterResponse registerStaff(AuthRequest<CustomerRequest> request);
 }

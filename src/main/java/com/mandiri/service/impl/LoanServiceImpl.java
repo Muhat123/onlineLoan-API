@@ -7,6 +7,7 @@ import com.mandiri.service.service.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,17 +16,19 @@ public class LoanServiceImpl implements LoanService {
     private final LoanTypeRepository loanTypeRepository;
 
     public LoanType addLoan(LoanType loan){
+
         LoanType loanType = LoanType.builder()
                 .id(loan.getId())
                 .type(loan.getType())
                 .maxLoan(loan.getMaxLoan())
+                .customer(loan.getCustomer())
                 .build();
 
         return loanTypeRepository.save(loanType);
     }
 
-    public LoanType getAllLoan(){
-        return loanTypeRepository.findAll().get(0);
+    public List<LoanType> getAllLoan(){
+        return loanTypeRepository.findAll();
     }
 
     public LoanType updateLoan(LoanType loan){

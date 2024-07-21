@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,17 +23,7 @@ public class LoanTransactionResponse {
     private List<LoanTransactionDetailResponse> loanTransactionDetails;
     private Long createdAt;
     private Long updatedAt;
+    private String midtrans;
 
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    public static class LoanTransactionDetailResponse {
-        private String id;
-        private Long transactionDate;
-        private Double nominal;
-        private String loanStatus;
-        private Long createdAt;
-        private Long updatedAt;
-    }
+
 }

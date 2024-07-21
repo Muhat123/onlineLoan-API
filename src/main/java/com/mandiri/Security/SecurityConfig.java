@@ -1,5 +1,6 @@
 package com.mandiri.Security;
 
+import com.mandiri.entity.Role;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,6 @@ public class SecurityConfig {
     private final AuthTokenFilter auth;
 
     private final String[] WHITE_LIST_URL = {
-            "/api/v1/customer/**",
             "/api/auth/**",
             "/swagger-ui/**",
             "/swagger-ui.html/**",
@@ -42,11 +42,17 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL).permitAll()
-                                .anyRequest().authenticated()
+                                .requestMatchers("/api/v1/customer/admin/**").hasAnyAuthority("ROLE_ADMIN","ROLE_STAFF")
+                                .requestMatchers("/api/v1/customer/update ").hasAnyAuthority("ROLE_ADMIN","ROLE_STAFF","ROLE_CUSTOMER")
+                                .requestMatchers("/api/v1/customer/avatar/**").hasAnyAuthority("ROLE_ADMIN","ROLE_STAFF","ROLE_CUSTOMER")
+                                .requestMatchers("/api/v1/loan/admin/**").hasAnyAuthority("ROLE_ADMIN","ROLE_STAFF")
+                                .requestMatchers("/api/v1/loan/**").hasAnyAuthority("ROLE_ADMIN","ROLE_STAFF","ROLE_CUSTOMER")
+                                .requestMatchers("/api/v1/loan/pay").hasAnyAuthority("ROLE_CUSTOMER").anyRequest().authenticated()
                 ).addFilterBefore(auth, UsernamePasswordAuthenticationFilter.class);
         return http.build();
 
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

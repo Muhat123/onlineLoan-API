@@ -7,6 +7,7 @@ import com.mandiri.dto.reponse.RegisterResponse;
 import com.mandiri.dto.request.AuthRequest;
 import com.mandiri.dto.request.CustomerRequest;
 import com.mandiri.entity.AppUser;
+import com.mandiri.entity.Customer;
 import com.mandiri.entity.Role;
 import com.mandiri.entity.User;
 import com.mandiri.repository.UserRepository;
@@ -43,19 +44,23 @@ public class AuthenticaionServiceImpl implements AuthenticationService {
         List<Role> roles = new ArrayList<>();
         roles.add(role);
 
-        User user = User.builder()
-                .username(request.getUsername().toLowerCase())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .roles(roles)
-                .build();
-
-        user = userRepository.saveAndFlush(user);
-
         CustomerRequest requestData = request.getData().orElseThrow(
                 () -> new ResourceNotFoundException("Customer not found")
         );
 
-        requestData.setUser(user);  // set relation customer to user
+
+        User user = User.builder()
+                .username(request.getUsername().toLowerCase())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .roles(roles)
+                .dateOfBirth(requestData.getDateOfBirth())
+                .build();
+
+
+        user = userRepository.saveAndFlush(user);
+
+
+        requestData.setUser(user);// set relation customer to user
 
         customerService.saveCustomer(requestData);
 
@@ -79,7 +84,7 @@ public class AuthenticaionServiceImpl implements AuthenticationService {
         user = userRepository.saveAndFlush(user);
 
         CustomerRequest requestData = request.getData().orElseThrow(
-                () -> new ResourceNotFoundException("Customer not found")
+                () -> new ResourceNotFoundException("Admin not found")
         );
 
         requestData.setUser(user);  // set relation customer to user
@@ -117,5 +122,32 @@ public class AuthenticaionServiceImpl implements AuthenticationService {
                 .role(appUser.getRole())
                 .build();
 
+    }
+
+    public RegisterResponse registerStaff(AuthRequest<CustomerRequest> request) {
+        Role role = roleService.getOrSave(Role.ERole.ROLE_STAFF);
+        List<Role> roleStaff = new ArrayList<>();
+        roleStaff.add(role);
+
+        User user = User.builder()
+                .username(request.getUsername().toLowerCase())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .roles(roleStaff)
+                .build();
+
+        user = userRepository.saveAndFlush(user);
+
+        CustomerRequest requestData = request.getData().orElseThrow(
+                () -> new ResourceNotFoundException("Staff not found")
+        );
+
+        requestData.setUser(user);
+
+        customerService.saveCustomer(requestData);
+
+        return RegisterResponse.builder()
+                .username(user.getUsername())
+                .role(role.getName())
+                .build();
     }
 }

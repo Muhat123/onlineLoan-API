@@ -1,5 +1,6 @@
 package com.mandiri.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mandiri.entity.LoanTransaction;
 import com.mandiri.entity.LoanTransactionDetail;
 import lombok.AllArgsConstructor;
@@ -15,12 +16,14 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoanTransactionRequest {
+    private String id;
     private String customerId;
     private String loanTypeId;
     private Double nominal;
     private Long approvedAt;
     private String approvedBy;
     private LoanTransaction.ApprovalStatus approvalStatus;
+    @JsonIgnore
     private List<LoanTransactionDetail> transactionDetails = new ArrayList<>(); //
     private Long createdAt;
     private Long updatedAt;

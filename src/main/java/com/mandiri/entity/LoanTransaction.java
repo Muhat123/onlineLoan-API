@@ -1,5 +1,6 @@
 package com.mandiri.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +21,7 @@ public class LoanTransaction {
     @GeneratedValue (strategy = GenerationType.UUID)
     private String id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private LoanType loanType;
 
     @ManyToOne
@@ -34,6 +35,7 @@ public class LoanTransaction {
     private ApprovalStatus approvalStatus;
 
     @OneToMany (mappedBy = "loanTransaction", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<LoanTransactionDetail> loanTransactionDetails = new ArrayList<>();
     private Long createdAt;
     private Long updatedAt;
