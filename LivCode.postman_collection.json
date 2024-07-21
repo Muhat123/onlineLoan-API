@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "726e02ed-6442-410c-bc2e-e940908de98a",
+		"name": "LivCode",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36706780"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "getAllCustomer",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "updateLoan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/admin/loan",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"admin",
+								"loan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLoan",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "deleteById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NDc2NzMsImlhdCI6MTcyMTU0NDA3MywiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.46EWgPLFvAQepneu71B_ZC1s-kUCVYrLPL5PSuDQeAE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/admin/856437c4-ab0b-4e2a-b9cd-24a6ee20e9ac",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"admin",
+								"856437c4-ab0b-4e2a-b9cd-24a6ee20e9ac"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUSTOMER",
+			"item": [
+				{
+					"name": "PostCustomer",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "7156a582-bc1d-43cf-be97-d93db539e022",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"phone\": \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addLoan",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "getAllLoan",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustoer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"743b5b35-d06d-429f-bf86-09a03cc1ad82\",\n    \"firstName\": \"Salman\",\n    \"lastName\": \"salman\",\n    \"dateOfBirth\": \"1999-01-01\",\n    \"phone\": \"09865324529\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/admin/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"admin",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfilePic",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/enigma/Pictures/Screenshots/Screenshot from 2024-06-25 08-59-55.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/admin/avatar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"admin",
+								"avatar"
+							],
+							"query": [
+								{
+									"key": "avatar",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete ProfilPic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NDk5ODIsImlhdCI6MTcyMTU0NjM4MiwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.PpXsCi5w7pTZeo2W3P5niHFfcmj3NANrsDVHeckKm8U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/enigma/Pictures/Screenshots/Screenshot from 2024-06-25 08-59-55.png",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/avatar/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NDk5ODIsImlhdCI6MTcyMTU0NjM4MiwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.PpXsCi5w7pTZeo2W3P5niHFfcmj3NANrsDVHeckKm8U",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"avatar",
+								"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NDk5ODIsImlhdCI6MTcyMTU0NjM4MiwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.PpXsCi5w7pTZeo2W3P5niHFfcmj3NANrsDVHeckKm8U"
+							],
+							"query": [
+								{
+									"key": "avatar",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register/Login",
+			"item": [
+				{
+					"name": "RegisterCustomer",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "RegisterAdmin",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LoanTransaction",
+			"item": [
+				{
+					"name": "3Month_Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/three-month",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"three-month"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6Month_Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NTE5NjAsImlhdCI6MTcyMTU0ODM2MCwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.haZ5b2ukckDUFF3Q14unNB34JqwBA63o_h9q2rKzqYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": \"5b6ee025-1be8-4983-a2ee-a29d94228ecf\",\n  \"loanTypeId\": \"96087400-2436-4c30-8cdf-481d2dce2960\",\n  \"nominal\": 25000000,\n  \"approvedAt\": 1689571576000,\n  \"createdAt\": 1689571576000,\n  \"updatedAt\": 1689571576000,\n  \"transactionDetails\": [\n    {\n      \"transactionDate\": 1692249976000,\n      \"nominal\": 25000000\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/sixth-month",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"sixth-month"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9Month_transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NTE5NjAsImlhdCI6MTcyMTU0ODM2MCwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.haZ5b2ukckDUFF3Q14unNB34JqwBA63o_h9q2rKzqYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": \"5b6ee025-1be8-4983-a2ee-a29d94228ecf\",\n  \"loanTypeId\": \"96087400-2436-4c30-8cdf-481d2dce2960\",\n  \"nominal\": 25000000,\n  \"approvedAt\": 1689571576000,\n  \"createdAt\": 1689571576000,\n  \"updatedAt\": 1689571576000,\n  \"transactionDetails\": [\n    {\n      \"transactionDate\": 1692249976000,\n      \"nominal\": 25000000\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/nine-month",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"nine-month"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12Month_transcation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiI2MDljOTAyOS05MmFhLTQyZDUtOThiYy00YmE5MDY2ODY5M2EiLCJleHAiOjE3MjE1NTE5NjAsImlhdCI6MTcyMTU0ODM2MCwiUm9sZSI6IlJPTEVfQ1VTVE9NRVIifQ.haZ5b2ukckDUFF3Q14unNB34JqwBA63o_h9q2rKzqYc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerId\": \"5b6ee025-1be8-4983-a2ee-a29d94228ecf\",\n  \"loanTypeId\": \"96087400-2436-4c30-8cdf-481d2dce2960\",\n  \"nominal\": 25000000,\n  \"approvedAt\": 1689571576000,\n  \"createdAt\": 1689571576000,\n  \"updatedAt\": 1689571576000,\n  \"transactionDetails\": [\n    {\n      \"transactionDate\": 1692249976000,\n      \"nominal\": 25000000\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/nine-month",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"nine-month"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addLoanTransaction",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "payLoan",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/loanTransaction/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"loanTransaction",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changeLoanBalance",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"2b67170e-b2ce-4e58-8cb1-219d3f4b3e6d\",\n    \"nominal\": 25000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/customer/changeloanbalance",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"customer",
+								"changeloanbalance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllLoancTransaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiJhMDc5YjA4OC02M2IwLTQxNTEtYjM0MC01M2I0ZWVjM2E3OGQiLCJleHAiOjE3MjE1NTIxOTYsImlhdCI6MTcyMTU0ODU5NiwiUm9sZSI6IlJPTEVfQURNSU4ifQ.Ag_apCuvagaGoxfXAFOBYbwRst4ZMTzj-RF-cnN0zfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/admin/loanTransaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"admin",
+								"loanTransaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllLoancTransactionById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiJhMDc5YjA4OC02M2IwLTQxNTEtYjM0MC01M2I0ZWVjM2E3OGQiLCJleHAiOjE3MjE1NTIxOTYsImlhdCI6MTcyMTU0ODU5NiwiUm9sZSI6IlJPTEVfQURNSU4ifQ.Ag_apCuvagaGoxfXAFOBYbwRst4ZMTzj-RF-cnN0zfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/admin/loanTransaction/91a4d168-7696-4a0c-be30-4b8a377fcfd3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"admin",
+								"loanTransaction",
+								"91a4d168-7696-4a0c-be30-4b8a377fcfd3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteLoancTransactionById Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNYW5kaXJpIExvYW4iLCJzdWIiOiJhMDc5YjA4OC02M2IwLTQxNTEtYjM0MC01M2I0ZWVjM2E3OGQiLCJleHAiOjE3MjE1NTIxOTYsImlhdCI6MTcyMTU0ODU5NiwiUm9sZSI6IlJPTEVfQURNSU4ifQ.Ag_apCuvagaGoxfXAFOBYbwRst4ZMTzj-RF-cnN0zfc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/loan/admin/loanTransaction/91a4d168-7696-4a0c-be30-4b8a377fcfd3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"loan",
+								"admin",
+								"loanTransaction",
+								"91a4d168-7696-4a0c-be30-4b8a377fcfd3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
